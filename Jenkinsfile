@@ -13,8 +13,8 @@ pipeline {
     }
         stage('Push'){
             steps{
-                withCredentials([string(credentialsId: 'dockerHub', variable: 'dockerHubpwd')]) {
-                     sh "docker login -u raoulcarnot -p ${dockerhubpwd}"
+                withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+        	     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
                      sh 'docker push raoulcarnot/nodetodo:latest'
                 }
             }
