@@ -8,7 +8,7 @@ pipeline {
     }
         stage('Build'){
             steps{
-            sh 'docker built -t raoulcarnot/nodetodo:lastest .'
+            sh 'docker build -t raoulcarnot/nodetodo:latest .'
         }
     }
         stage('Push'){
